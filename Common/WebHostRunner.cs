@@ -129,16 +129,17 @@ namespace Common
             _stopwatch.Start();
             _configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{_environmentName}.json", optional: true)
                 .AddEnvironmentVariables()
                 .AddCommandLine(_args)
                 .Build();
 
             Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(_configuration)
                 .Enrich.FromLogContext()
                 .Enrich.WithProperty("Environment", _environmentName)
                 .Enrich.WithProperty("ApplicationName", _serviceName)
-                .MinimumLevel.Debug()
-                .WriteTo.ColoredConsole()
                 .CreateLogger();
 
             _logger = Log.ForContext<WebHostRunner<TStartup>>();
