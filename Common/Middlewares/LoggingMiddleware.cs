@@ -56,13 +56,13 @@ namespace Common.Middlewares
                 logger = logger.ForContext(LoggingConstants.RequestFrom, context.Request.Headers[TracingHeaders.RequestFrom].ToString());
             }
 
-            _tracingInfo.RpcLevel =
-                int.TryParse(context.Request.Headers[TracingHeaders.RpcLevel], out var rpcLevel) ? ++rpcLevel : 0;
+            _tracingInfo.RpcDepth =
+                int.TryParse(context.Request.Headers[TracingHeaders.RpcDepth], out var rpcDepth) ? ++rpcDepth : 0;
 
-            propertyEnrichers.Add(new PropertyEnricher(LoggingConstants.RpcLevel, _tracingInfo.RpcLevel));
+            propertyEnrichers.Add(new PropertyEnricher(LoggingConstants.RpcDepth, _tracingInfo.RpcDepth));
 
             var requestId = context.Request.Headers[TracingHeaders.RequestId].ToString();
-            var newId = TracingInfo.GenerateRequestId(rpcLevel, requestId);
+            var newId = TracingInfo.GenerateRequestId(rpcDepth, requestId);
             _tracingInfo.RequestId = newId;
 
             context.TraceIdentifier = newId;

@@ -6,7 +6,7 @@ namespace Common.Tracing
 
         public const string Response = nameof(Response);
 
-        public const string RpcLevel = nameof(RpcLevel);
+        public const string RpcDepth = nameof(RpcDepth);
 
         public const string RequestId = nameof(RequestId);
 

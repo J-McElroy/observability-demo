@@ -7,13 +7,13 @@ namespace Common.Tracing
     {
         private const string IdSeparator = "^";
 
-        private static readonly AsyncLocal<int> _rpcLevel = new AsyncLocal<int>();
+        private static readonly AsyncLocal<int> _rpcDepth = new AsyncLocal<int>();
         private static readonly AsyncLocal<string> _requestId = new AsyncLocal<string>();
 
-        public int RpcLevel
+        public int RpcDepth
         {
-            get => _rpcLevel.Value;
-            set => _rpcLevel.Value = value;
+            get => _rpcDepth.Value;
+            set => _rpcDepth.Value = value;
         }
 
         public string RequestId
@@ -22,9 +22,9 @@ namespace Common.Tracing
             set => _requestId.Value = value;
         }
 
-        public static string GenerateRequestId(int rpcLevel, string oldId)
+        public static string GenerateRequestId(int rpcDepth, string oldId)
         {
-            var newId = $"{rpcLevel}-{Guid.NewGuid().ToString().Replace("-", string.Empty)}";
+            var newId = $"{rpcDepth}-{Guid.NewGuid().ToString().Replace("-", string.Empty)}";
             var separator = string.IsNullOrEmpty(oldId) ? string.Empty: IdSeparator;
             newId = $"{oldId}{separator}{newId}";
             return newId;

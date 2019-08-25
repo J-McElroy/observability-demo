@@ -5,6 +5,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using Serilog.Debugging;
 
 namespace Common
 {
@@ -143,6 +144,15 @@ namespace Common
                 .CreateLogger();
 
             _logger = Log.ForContext<WebHostRunner<TStartup>>();
+            
+            var selfLogger = new LoggerConfiguration()
+                .ReadFrom.Configuration(_configuration.GetSection("SelfLog"))
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("Environment", _environmentName)
+                .Enrich.WithProperty("ApplicationName", _serviceName)
+                .CreateLogger();
+
+            SelfLog.Enable(e => selfLogger.Error("{ErrorMessage}", e));
 
             _stopwatch.Stop();
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FirstWebApp;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using Serilog.Core;
 
 namespace TestWebApp.Controllers
 {
@@ -11,6 +13,8 @@ namespace TestWebApp.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private static ILogger _logger = Log.Logger.ForContext<ValuesController>();
+        
         private readonly ISecondServiceClient _client;
         
         public ValuesController(ISecondServiceClient client)
@@ -29,6 +33,14 @@ namespace TestWebApp.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
+            _logger.Information("{IntegerField}", id);
+            return "value";
+        }
+        
+        [HttpGet("str/{id}")]
+        public ActionResult<string> GetString(string id)
+        {
+            _logger.Information("{IntegerField}", id);
             return "value";
         }
 

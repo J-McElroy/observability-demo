@@ -76,8 +76,8 @@ namespace Common.Communication
             {
                 request.Headers.TryAddWithoutValidation(TracingHeaders.RequestFrom, _serviceName);
             }
-            var rpcDepth = _tracingInfo.RpcLevel;
-            request.Headers.TryAddWithoutValidation(TracingHeaders.RpcLevel, rpcDepth.ToString());
+            var rpcDepth = _tracingInfo.RpcDepth;
+            request.Headers.TryAddWithoutValidation(TracingHeaders.RpcDepth, rpcDepth.ToString());
 
             var requestId = _tracingInfo.RequestId;
             request.Headers.TryAddWithoutValidation(TracingHeaders.RequestId, requestId);
@@ -89,10 +89,10 @@ namespace Common.Communication
                 .ForContext(LoggingConstants.RequestFrom, _serviceName)
                 .ForContext(LoggingConstants.RequestId, _tracingInfo.RequestId);
 
-           var rpcLevel = _tracingInfo.RpcLevel;
-           if (rpcLevel > 0)
+           var rpcDepth = _tracingInfo.RpcDepth;
+           if (rpcDepth > 0)
            {
-                logger = logger.ForContext(LoggingConstants.RpcLevel, rpcLevel);
+                logger = logger.ForContext(LoggingConstants.RpcDepth, rpcDepth);
            }
 
            return logger;

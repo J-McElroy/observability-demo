@@ -2,7 +2,7 @@ namespace Common.Tracing
 {
     public interface ITracingInfo
     {
-        int RpcLevel { get; set; }
+        int RpcDepth { get; set; }
 
         string RequestId { get; set; }
     }

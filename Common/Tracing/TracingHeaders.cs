@@ -4,7 +4,7 @@ namespace Common.Tracing
     {
         public const string RequestId = "request-id";
 
-        public const string RpcLevel = "rpc-level";
+        public const string RpcDepth = "rpc-depth";
 
         public const string RequestFrom = "request-from";
     }
