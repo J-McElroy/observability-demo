@@ -1,11 +1,11 @@
 ﻿using Common;
 
-namespace SecondWebApp
+namespace GatewayService
 {
     public class Program
     {
-        private const string ServiceName = "SecondService";
-        
+        private const string ServiceName = "GatewwayService";
+
         public static void Main(string[] args)
         {
             var service = new WebHostRunner<Startup>(ServiceName, args);

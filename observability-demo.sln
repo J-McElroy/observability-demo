@@ -1,10 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstWebApp", "FirstWebApp\FirstWebApp.csproj", "{43B807B1-2B6A-4562-BFC4-9FDA6B7D1C8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "GatewayService\GatewayService.csproj", "{43B807B1-2B6A-4562-BFC4-9FDA6B7D1C8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{8FC73FB5-EF48-474B-B635-4D721089BF46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondWebApp", "SecondWebApp\SecondWebApp.csproj", "{5959DD22-81D7-4FAA-A531-45DF24376C6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderService\OrderService.csproj", "{5959DD22-81D7-4FAA-A531-45DF24376C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Contracts", "OrderService.Contracts\OrderService.Contracts.csproj", "{55679D89-1E03-49C5-A3B1-B0A18251B9B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService", "PaymentService\PaymentService.csproj", "{F38F6E94-6C4B-4C6C-ACA9-D5F3351DCA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Contracts", "PaymentService.Contracts\PaymentService.Contracts.csproj", "{1D89D4E8-0376-4DF2-8B10-E03303D9139A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +30,17 @@ Global
 		{5959DD22-81D7-4FAA-A531-45DF24376C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5959DD22-81D7-4FAA-A531-45DF24376C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5959DD22-81D7-4FAA-A531-45DF24376C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55679D89-1E03-49C5-A3B1-B0A18251B9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55679D89-1E03-49C5-A3B1-B0A18251B9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55679D89-1E03-49C5-A3B1-B0A18251B9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55679D89-1E03-49C5-A3B1-B0A18251B9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38F6E94-6C4B-4C6C-ACA9-D5F3351DCA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38F6E94-6C4B-4C6C-ACA9-D5F3351DCA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38F6E94-6C4B-4C6C-ACA9-D5F3351DCA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38F6E94-6C4B-4C6C-ACA9-D5F3351DCA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D89D4E8-0376-4DF2-8B10-E03303D9139A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D89D4E8-0376-4DF2-8B10-E03303D9139A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D89D4E8-0376-4DF2-8B10-E03303D9139A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D89D4E8-0376-4DF2-8B10-E03303D9139A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

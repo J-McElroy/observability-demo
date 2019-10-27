@@ -1,7 +1,7 @@
 ﻿using Common;
 using Microsoft.Extensions.Configuration;
 
-namespace SecondWebApp
+namespace PaymentService
 {
     public class Startup : BaseStartup
     {
@@ -10,6 +10,6 @@ namespace SecondWebApp
         {
         }
 
-        public override string ServiceName => "SecondService";
+        public override string ServiceName => "PaymentService";
     }
 }
