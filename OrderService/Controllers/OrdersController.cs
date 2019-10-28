@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Common.Pipelines;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Contracts.Models;
 using PaymentService.Contracts;
@@ -9,6 +10,7 @@ namespace OrderService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [MiddlewareFilter(typeof(RandomErrorPipeline))]
     public class OrdersController : ControllerBase
     {
         private readonly IPaymentServiceClient _client;

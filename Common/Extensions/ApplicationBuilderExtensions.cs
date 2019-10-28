@@ -22,5 +22,10 @@ namespace Common.Extensions
         {
             return builder.UseMiddleware<LoggingMiddleware>();
         }
+        
+        public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ExceptionHandlingMiddleware>();
+        }
     }
 }

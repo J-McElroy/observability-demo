@@ -43,6 +43,7 @@ namespace Common
             app.UseCorrelationId(new CorrelationIdOptions { UseGuidForCorrelationId = true });
             app.UseHealthCheckEndpoint();
             app.UseRequestLogging();
+            app.UseExceptionHandling();
             app.UseMvc();
         }
         
