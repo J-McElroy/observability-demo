@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Code Rules" Description="Code analysis rules" ToolsVersion="15.0">
+	<Rules AnalyzerId="SerilogAnalyzer" RuleNamespace="SerilogAnalyzer">
+	<Rule Id="Serilog001" Action="Error" /> 
+	<Rule Id="Serilog002" Action="Error" /> 
+	<Rule Id="Serilog003" Action="Error" /> 
+	<Rule Id="Serilog004" Action="Error" /> 
+	<Rule Id="Serilog005" Action="Error" /> 
+	<Rule Id="Serilog006" Action="Error" /> 
+	<Rule Id="Serilog007" Action="Error" /> 
+	<Rule Id="Serilog008" Action="Error" />
+  </Rules>
+</RuleSet>
