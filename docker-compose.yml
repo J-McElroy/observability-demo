@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  gatewayservice:
+    container_name: gatewayservice_
+    build:
+      context: GatewayService
+      dockerfile: Dockerfile
+    ports:
+         - "5001:80"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Docker
+  orderservice:
+    container_name: orderservice_
+    build:
+      context: OrderService
+      dockerfile: Dockerfile
+    ports:
+         - "5003:80"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Docker
+  paymentservice:
+    container_name: paymentservice_
+    build:
+      context: PaymentService
+      dockerfile: Dockerfile
+    ports:
+         - "5005:80"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Docker
+networks:
+ docker_backend:
