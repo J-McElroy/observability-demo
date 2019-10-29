@@ -44,6 +44,7 @@ namespace Common
             app.UseHealthCheckEndpoint();
             app.UseRequestLogging();
             app.UseExceptionHandling();
+            app.UseLatencyEmulation();
             app.UseMvc();
         }
         

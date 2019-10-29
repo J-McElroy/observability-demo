@@ -27,5 +27,10 @@ namespace Common.Extensions
         {
             return builder.UseMiddleware<ExceptionHandlingMiddleware>();
         }
+        
+        public static IApplicationBuilder UseLatencyEmulation(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<LatencyEmulatorMiddleware>();
+        }
     }
 }
