@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GatewayService.Models;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Contracts;
 using OrderService.Contracts.Models;
 using Serilog;
+using Order = GatewayService.Models.Order;
 
 namespace GatewayService.Controllers
 {
@@ -12,7 +14,7 @@ namespace GatewayService.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private static ILogger _logger = Log.Logger.ForContext<OrdersController>();
+        private static readonly ILogger Logger = Log.Logger.ForContext<OrdersController>();
         
         private readonly IOrderServiceClient _client;
         
@@ -23,15 +25,20 @@ namespace GatewayService.Controllers
         
         // GET api/orders
         [HttpGet]
-        public Task<IEnumerable<string>> GetOrders()
+        public async Task<IEnumerable<Order>> GetOrders()
         {
-            return _client.GetOrders();
+            return (await _client.GetOrders()).Select(el => new Order()
+            {
+                Id = el.Id, 
+                Items = el.Items,
+                Total = el.Total
+            });
         }
         
         [HttpGet("str/{id}")]
         public ActionResult<string> GetString(string id)
         {
-            _logger.Information("{IntegerField}", id);
+            Logger.Information("{IntegerField}", id);
             return "value";
         }
 

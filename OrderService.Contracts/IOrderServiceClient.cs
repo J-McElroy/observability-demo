@@ -8,7 +8,7 @@ namespace OrderService.Contracts
     public interface IOrderServiceClient
     {
         [Get("/orders")]
-        Task<IEnumerable<string>> GetOrders();
+        Task<IEnumerable<Order>> GetOrders();
 
         [Post("/orders")]
         Task<string> CreateOrder(CreateOrderRequest request);

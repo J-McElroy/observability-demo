@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoFixture;
 using Common.Pipelines;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Contracts.Models;
@@ -14,34 +17,37 @@ namespace OrderService.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IPaymentServiceClient _client;
+        private readonly Fixture _orderGenerator;
 
         public OrdersController(IPaymentServiceClient client)
         {
             _client = client;
+            _orderGenerator = new Fixture();
+            _orderGenerator.Customize<Order>(
+                c => c.With(
+                    x => x.Items, _orderGenerator.CreateMany<string>(new Random().Next(5)).ToList()));
         }
-        
-        // GET api/values
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Order>> Get()
         {
-            return new string[] {"value12", "value22"};
+            return Ok(_orderGenerator.CreateMany<Order>(new Random().Next(5)));
         }
 
-        // GET api/values/5
+
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Order> Get(int id)
         {
-            return "value";
+            return Ok(_orderGenerator.Create<Order>());
         }
 
-        // POST api/values
         [HttpPost]
         public Task<string> Post([FromBody] CreateOrderRequest request)
         {
             return _client.MakePayment(new PaymentRequest()
             {
                 CardNumber = request.CardNumber,
-                Total = 12.5
+                Total = _orderGenerator.Create<double>()
             });
         }
     }
