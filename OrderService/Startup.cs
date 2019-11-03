@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentService.Contracts;
 using Polly;
+using Serilog;
 
 namespace OrderService
 {
@@ -24,7 +25,9 @@ namespace OrderService
             services.AddHttpClient("clientwithhandlers")
                 .AddHttpMessageHandler<LoggingHandler>()
                 .AddTransientHttpErrorPolicy(p => 
-                    p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));;
+                    p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600),
+                        (response, calculatedWaitDuration) => { Log.Warning(
+                            response.Exception, "Request failed with {ResponseStatusCode}", response.Result?.StatusCode ); }));
         }
 
         protected override void ConfigureDependencyInjections(ContainerBuilder builder)

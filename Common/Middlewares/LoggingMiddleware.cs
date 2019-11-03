@@ -68,6 +68,8 @@ namespace Common.Middlewares
             context.TraceIdentifier = newId;
             _httpContextAccessor.HttpContext = context;
             
+            propertyEnrichers.Add(new PropertyEnricher(LoggingConstants.RequestId, _tracingInfo.RequestId));
+            
             var requestIdHash = $"{newId.GetHashCode():X}";
 
             using (LogContext.Push(propertyEnrichers.ToArray()))
